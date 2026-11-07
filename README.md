@@ -1,27 +1,12 @@
-# Almace Scaffolding
-[![Build Status](https://travis-ci.org/sparanoid/almace-scaffolding.svg)](https://travis-ci.org/sparanoid/almace-scaffolding)
-[![devDependency Status](https://david-dm.org/sparanoid/almace-scaffolding/dev-status.svg)](https://david-dm.org/sparanoid/almace-scaffolding#info=devDependencies)
-[![Built with Almace Scaffolding](https://d349cztnlupsuf.cloudfront.net/amsf-badge.svg)](https://sparanoid.com/lab/amsf/)
+# Jason Wiker
 
-`AMSF`, a.k.a. **Almace Scaffolding**, a super-fast Jekyll framework. Supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.
+Personal site. The projects, writing, portrait, and contact links are the ones already published for Jason Wiker.
 
------
+The previous site was a 2017 Jekyll project (Almace Scaffolding). This version is a small static site built with [Astro](https://astro.build).
 
-## [Getting Started](https://sparanoid.com/lab/amsf/getting-started.html)
+```bash
+npm install
+npm run dev
+```
 
-## Donate
-
-Wanna buy me a cup of coffee? [Great](https://sparanoid.com/donate/).
-
-## Author
-
-**Tunghsiao Liu**
-
-- Twitter: @[tunghsiao](https://twitter.com/tunghsiao)
-- GitHub: @[sparanoid](https://github.com/sparanoid)
-
-## Licenses
-
-All files and directories are licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) unless explicitly stated.
-
-© Sparanoid, Inc., Rights reserved as indicated above.
+`npm run build` writes the site to `dist/`.

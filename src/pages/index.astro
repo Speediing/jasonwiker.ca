@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Book from '../layouts/Book.astro';
+import Index from '../components/Index.astro';
+
+const entries = (await getCollection('work')).sort((a, b) => a.data.date.localeCompare(b.data.date));
+const description =
+  'Jason Wiker, software developer. Projects and writing from 2017: Snipbooks, PetPal, Petsy, and notes on learning iOS.';
+---
+
+<Book title="Jason Wiker" description={description} folio="01" current="home">
+  <div class="home-top">
+    <p class="dateline">2017 · Software developer</p>
+    <h1 class="display">
+      <span>Jason</span>
+      <span class="second">Wiker</span>
+    </h1>
+    <p class="lede">
+      I am a third year undergraduate computer science major at the University of Calgary. I have a passion for making things out of nothing and learning new stuff everyday.
+    </p>
+    <figure class="taped">
+      <div class="frame">
+        <img
+          src="/images/ipadcal.jpg"
+          width="2048"
+          height="1536"
+          alt="Snipbooks on an iPad: one day’s bookings across three stylists, with a color appointment running beside a cut."
+        />
+      </div>
+      <figcaption>Snipbooks · receptionist bookings · 12 Apr 2017</figcaption>
+    </figure>
+  </div>
+  <p class="section-label">Index</p>
+  <Index entries={entries} />
+</Book>

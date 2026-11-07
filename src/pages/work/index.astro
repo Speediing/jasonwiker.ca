@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Book from '../../layouts/Book.astro';
+import Index from '../../components/Index.astro';
+
+const entries = (await getCollection('work')).sort((a, b) => a.data.date.localeCompare(b.data.date));
+const description = 'Projects and writing by Jason Wiker: Snipbooks, PetPal, Petsy, and two essays from 2017.';
+---
+
+<Book title="Work" description={description} folio="02" current="work">
+  <p class="dateline">2017</p>
+  <h1 class="page-title">Work</h1>
+  <div class="stack">
+    <p class="lede">These are the things that I have built.</p>
+    <p class="lede">A collection of thoughts, tips and advice that I have accumulated.</p>
+  </div>
+  <div data-index>
+    <div class="tools" role="group" aria-label="Show">
+      <button type="button" data-kind="all" aria-pressed="true">All</button>
+      <button type="button" data-kind="project" aria-pressed="false">Projects</button>
+      <button type="button" data-kind="writing" aria-pressed="false">Writing</button>
+      <a class="news-link" href="/news/">News</a>
+    </div>
+    <label class="find">
+      <span>Find in the index</span>
+      <input data-find type="search" autocomplete="off" />
+    </label>
+    <p class="index-status" data-status role="status"></p>
+    <Index entries={entries} detailed />
+    <div class="blank" data-blank hidden>
+      <p class="blank-title">Nothing in the index matches.</p>
+      <p>Try another word, or show all of the entries.</p>
+      <div class="ledger" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</Book>

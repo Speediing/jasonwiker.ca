@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import '@fontsource-variable/fraunces/soft.css';
+import '@fontsource-variable/fraunces/soft-italic.css';
+import '@fontsource-variable/source-serif-4/wght.css';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
+import '@fontsource/dm-mono/latin-400.css';
+import '@fontsource/dm-mono/latin-500.css';
+
+interface Props {
+  title: string;
+  description: string;
+  folio: string;
+  current: 'home' | 'work' | 'about' | 'contact' | 'news' | 'entry';
+}
+
+const { title, description, folio, current } = Astro.props;
+
+const documentTitle = title === 'Jason Wiker' ? title : `${title} · Jason Wiker`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const image = new URL('/images/about.jpg', Astro.site);
+
+const nav = [
+  { href: '/', id: 'home', label: 'Home' },
+  { href: '/work/', id: 'work', label: 'Work' },
+  { href: '/about/', id: 'about', label: 'About' },
+  { href: '/contact/', id: 'contact', label: 'Contact' },
+] as const;
+
+function isCurrent(id: (typeof nav)[number]['id']): boolean {
+  if (current === id) return true;
+  return current === 'entry' && id === 'work';
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#b32822" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="rail">
+      <a class="spine" href="/">Jason Wiker</a>
+    </div>
+    <div class="page">
+      <header class="mast">
+        <p class="folio">{folio}</p>
+        <nav class="nav" aria-label="Pages">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={isCurrent(item.id) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </header>
+      <main id="content">
+        <slot />
+      </main>
+      <footer class="colophon">
+        <p>All posts are © Jason Wiker, all rights reserved.</p>
+        <ul>
+          <li><a href="mailto:jason.wiker@ucalgary.ca">Email</a></li>
+          <li><a href="https://github.com/speediing">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jason-wiker-02902a141/">LinkedIn</a></li>
+          <li><a href="/resume.pdf">Résumé</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script>
+      import '../scripts/book.ts';
+    </script>
+  </body>
+</html>

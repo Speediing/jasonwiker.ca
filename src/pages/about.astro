@@ -1,0 +1,36 @@
+---
+import Book from '../layouts/Book.astro';
+
+const description =
+  'Jason Wiker, a third-year computer science student at the University of Calgary in 2017, on statistical learning, iOS, and making things.';
+---
+
+<Book title="About" description={description} folio="03" current="about">
+  <p class="dateline">As written on this site, 2017</p>
+  <h1 class="page-title">About</h1>
+  <figure class="taped portrait">
+    <div class="frame">
+      <img
+        src="/images/about.jpg"
+        width="960"
+        height="959"
+        alt="Jason Wiker in a black hoodie, standing in front of a painted wall of sunflowers and bees."
+      />
+    </div>
+    <figcaption>Jason Wiker</figcaption>
+  </figure>
+  <article class="prose">
+    <h2>Hi</h2>
+    <p>
+      My name is Jason and I am a third year undergraduate computer science major at the University of Calgary. I have a passion for making things out of nothing and learning new stuff everyday. Currently my interests mostly are in the field of statistical learning and applying statistical models to data sets. Lately I have been trying to learn more about quantitative analysis and algorithmic trading in the finance market as well.
+    </p>
+    <p>
+      I also have an interest in iOS development with a couple projects currently completed. I really enjoy trying to understand a clients workflow and creating an app that simplifies that as much as possible. Accompanying this I like to make the app as visually appealing and stylish as possible. HCI is something I would like to delve more into.
+    </p>
+    <p><strong>I'm always interested to hear from you</strong></p>
+    <p>
+      So if you have a possible idea that you want built or you want to talk about another opportunity feel free to contact me by my contact links on the bottom. As well you can take a look at my <a href="/resume.pdf">resume</a>. I'm always looking to try new things and hear from new people.
+    </p>
+    <p><em>All posts are &copy; Jason Wiker, all rights reserved.</em></p>
+  </article>
+</Book>

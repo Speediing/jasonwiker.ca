@@ -1,62 +1,16 @@
 {
-  "name": "almace-scaffolding",
-  "version": "1.1.8",
-  "description": "Almace Scaffolding, a super-fast Jekyll framework",
-  "author": "Tunghsiao Liu",
-  "homepage": "https://sparanoid.com/lab/amsf/",
-  "main": "Gruntfile.coffee",
+  "name": "jason-wiker",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "grunt test"
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 127.0.0.1 --port 4321",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --host 127.0.0.1 --port 4321"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sparanoid/almace-scaffolding.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sparanoid/almace-scaffolding/issues"
-  },
-  "license": "MIT",
-  "keywords": [
-    "amsf",
-    "jekyll",
-    "blog",
-    "less",
-    "css"
-  ],
-  "readmeFilename": "README.md",
-  "devDependencies": {
-    "autoprefixer": "^6.6.1",
-    "coffeelint": "^1.16.0",
-    "grunt": "^1.0.1",
-    "grunt-assets-inline": "^0.1.19",
-    "grunt-banner": "^0.6.0",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-bump": "^0.8.0",
-    "grunt-cache-bust": "^1.5.0",
-    "grunt-cleanempty": "^1.0.4",
-    "grunt-coffeelint": "0.0.16",
-    "grunt-concurrent": "^2.3.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^2.0.0",
-    "grunt-contrib-htmlmin": "^2.2.0",
-    "grunt-contrib-less": "^1.4.0",
-    "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-conventional-changelog": "^6.1.0",
-    "grunt-csscomb": "^3.1.1",
-    "grunt-git": "^1.0.0",
-    "grunt-html-trim": "^0.1.0",
-    "grunt-jekyll": "^0.4.4",
-    "grunt-minjson": "^0.4.0",
-    "grunt-newer": "^1.2.0",
-    "grunt-postcss": "^0.8.0",
-    "grunt-service-worker": "^0.1.1",
-    "grunt-shell": "^2.1.0",
-    "grunt-text-replace": "^0.4.0",
-    "grunt-uncss-inline": "^1.0.5",
-    "grunt-xmlmin": "^0.1.8",
-    "jit-grunt": "^0.10.0",
-    "time-grunt": "^1.4.0"
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.8",
+    "@fontsource-variable/source-serif-4": "^5.2.8",
+    "@fontsource/dm-mono": "^5.2.6",
+    "astro": "^5.15.4"
   }
 }

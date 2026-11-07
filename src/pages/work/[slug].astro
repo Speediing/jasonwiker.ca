@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Book from '../../layouts/Book.astro';
+import { formatDate, kindLabel } from '../../lib/entries';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Book title={entry.data.title} description={entry.data.dek} folio={formatDate(entry.data.date)} current="entry">
+  <p class="running">
+    <a href="/work/">Work</a>
+    <span aria-hidden="true"> · </span>
+    <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+    <span aria-hidden="true"> · </span>
+    <span>{kindLabel(entry.data.kind)}</span>
+  </p>
+  <h1 class="entry-title">{entry.data.title}</h1>
+  <p class="dek-lead">{entry.data.dek}</p>
+  <article class="prose">
+    <Content />
+  </article>
+</Book>

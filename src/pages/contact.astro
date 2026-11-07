@@ -1,0 +1,53 @@
+---
+import Book from '../layouts/Book.astro';
+import { emptyLetter } from '../lib/letters';
+
+const description =
+  'Write to Jason Wiker: jason.wiker@ucalgary.ca, GitHub, LinkedIn, and a résumé.';
+---
+
+<Book title="Contact" description={description} folio="04" current="contact">
+  <p class="dateline">Correspondence</p>
+  <h1 class="page-title">Contact</h1>
+  <div data-contact>
+    <p class="lede stack">I'm always interested to hear from you.</p>
+    <a class="address" data-address href="mailto:jason.wiker@ucalgary.ca"><span>jason.wiker</span><span>@ucalgary.ca</span></a>
+    <div class="actions">
+      <button class="copy" type="button" data-copy>Copy address</button>
+      <span class="copy-status" data-copy-status role="status"></span>
+    </div>
+    <ul class="contacts">
+      <li>
+        <a href="https://github.com/speediing">GitHub <span class="meta">speediing</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/jason-wiker-02902a141/">LinkedIn <span class="meta">jason-wiker</span></a>
+      </li>
+      <li>
+        <a href="/resume.pdf">Résumé <span class="meta">PDF</span></a>
+      </li>
+    </ul>
+    <div class="letter">
+      <p>
+        So if you have a possible idea that you want built or you want to talk about another opportunity.
+      </p>
+      <fieldset>
+        <legend>Open a letter about</legend>
+        <label class="choice">
+          <input type="radio" name="letter" value="idea" />
+          an idea to build
+        </label>
+        <label class="choice">
+          <input type="radio" name="letter" value="opportunity" />
+          another opportunity
+        </label>
+        <label class="choice">
+          <input type="radio" name="letter" value="work" />
+          a question about the work
+        </label>
+      </fieldset>
+      <p class="letter-status" data-letter-status role="status">{emptyLetter}</p>
+      <a class="mail-open" data-mail href="mailto:jason.wiker@ucalgary.ca">Open in your mail</a>
+    </div>
+  </div>
+</Book>

@@ -1,0 +1,40 @@
+---
+import { formatDate, kindLabel, type Kind } from '../lib/entries';
+
+interface Entry {
+  id: string;
+  data: {
+    title: string;
+    date: string;
+    kind: Kind;
+    dek: string;
+  };
+}
+
+interface Props {
+  entries: Entry[];
+  detailed?: boolean;
+}
+
+const { entries, detailed = false } = Astro.props;
+---
+
+<ol class="index">
+  {
+    entries.map((entry) => {
+      const hay = `${entry.data.title} ${entry.data.dek} ${kindLabel(entry.data.kind)} ${formatDate(entry.data.date)}`.toLowerCase();
+      return (
+        <li data-entry data-entry-kind={entry.data.kind} data-hay={hay}>
+          <a class="row" href={`/work/${entry.id}/`}>
+            <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+            <span class="row-copy">
+              <h2>{entry.data.title}</h2>
+              {detailed ? <p class="dek">{entry.data.dek}</p> : null}
+            </span>
+            <span class="kind">{kindLabel(entry.data.kind)}</span>
+          </a>
+        </li>
+      );
+    })
+  }
+</ol>
