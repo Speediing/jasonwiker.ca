@@ -1,0 +1,21 @@
+---
+import Book from '../layouts/Book.astro';
+
+const description = 'News on jasonwiker.ca. Nothing was filed here.';
+---
+
+<Book title="News" description={description} folio="05" current="news">
+  <p class="dateline">Empty</p>
+  <h1 class="page-title">News</h1>
+  <div class="blank">
+    <p class="blank-title">Nothing filed under News.</p>
+    <p>This shelf was on the previous site. It was left empty.</p>
+    <div class="ledger" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="return"><a href="/work/">Back to the index</a></p>
+  </div>
+</Book>
